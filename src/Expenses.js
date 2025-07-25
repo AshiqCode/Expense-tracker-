@@ -1,0 +1,80 @@
+import "./index.css";
+import avatar from "./assest/avatar.png";
+import InputPopUp from "./InputPopUp";
+import { useState } from "react";
+const Expenses = () => {
+  const [showPopUp, setshowPopUp] = useState(false);
+  const [alluser, setalluser] = useState([]);
+  return (
+    <div className="bg-[rgb(27,27,27)] w-[85%] text-white mt-6 mx-auto">
+      <InputPopUp
+        setshowPopUp={setshowPopUp}
+        showPopUp={showPopUp}
+        alluser={alluser}
+        setalluser={setalluser}
+      />
+      <div
+        style={{ borderBottom: "solid white 1px" }}
+        className="text-left text-2xl pb-2 pl-6 pt-2 font-mono flex justify-between"
+      >
+        <div>Expenses</div>
+        <div>
+          <button
+            className="font-sans text-[12px] mr-8 bg-cyan-600 px-2 leading-6"
+            onClick={() => {
+              setshowPopUp(true);
+            }}
+          >
+            ADD Expense
+          </button>
+        </div>
+      </div>
+      <div className="h-[600px] flex">
+        <div className="bg-[rgb(27,27,27)] w-[15vw] text-white select-none">
+          <div className="mt-6">
+            <img src={avatar} className="rounded-full h-24 mx-auto ]" />
+            <p className="text-2xl mb-8 font-serif ">Avatar</p>
+          </div>
+          <div className="bg-slate-400 bg-opacity-10 w-9/12 mx-auto p-2 rounded-lg mt-6 ">
+            home
+          </div>
+          <div className="bg-slate-400 bg-opacity-10 w-9/12 mx-auto p-2 rounded-lg mt-4">
+            Expenses
+          </div>
+          <div className="bg-slate-400 bg-opacity-10 w-9/12 mx-auto p-2 rounded-lg mt-4">
+            trips
+          </div>
+          <div className="bg-slate-400 bg-opacity-10 w-9/12 mx-auto p-2 rounded-lg mt-4">
+            approvals
+          </div>
+          <div className="bg-slate-400 bg-opacity-10 w-9/12 mx-auto p-2 rounded-lg mt-4">
+            settings
+          </div>
+          <div className="bg-slate-400 bg-opacity-10 w-9/12 mx-auto p-2 rounded-lg mt-4">
+            support
+          </div>
+        </div>
+        <div className="bg-white bg-opacity-5 w-[75vw]">
+          <div className="flex justify-around">
+            <div>Subject</div>
+            <div>Category</div>
+            <div>Merchant</div>
+            <div>Date</div>
+          </div>
+          {alluser.map((e) => {
+            return (
+              <div className="flex justify-around" key={e.id}>
+                <div>{e.Subject}</div>
+                <div>{e.Category}</div>
+                <div>{e.Merchant}</div>
+                <div>{e.Date}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Expenses;

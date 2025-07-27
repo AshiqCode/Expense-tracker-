@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./index.css";
-import { data } from "autoprefixer";
 const InputPopUp = ({ showPopUp, setshowPopUp, alluser, setalluser }) => {
   const [Subject, setSubject] = useState();
   const [Merchant, setMerchant] = useState();
@@ -9,7 +8,6 @@ const InputPopUp = ({ showPopUp, setshowPopUp, alluser, setalluser }) => {
   const [Category, setCategory] = useState();
   const [Description, setDescription] = useState();
   const [Employee, setEmployee] = useState();
-  console.log(alluser);
 
   const adduser = () => {
     const user = {
@@ -24,9 +22,8 @@ const InputPopUp = ({ showPopUp, setshowPopUp, alluser, setalluser }) => {
     };
 
     setalluser((prev) => [...prev, user]);
+    setshowPopUp(false);
   };
-
-  console.log(alluser);
 
   return (
     <>
@@ -36,11 +33,13 @@ const InputPopUp = ({ showPopUp, setshowPopUp, alluser, setalluser }) => {
             style={{ border: "solid white 1px" }}
             className="w-[40%] bg-black mx-auto text-left p-8 text-white rounded-lg"
           >
+            <h1 className="mb-2 pb-9 text-2xl"> Add a New Expense</h1>
             <div className="text-[#ffffff99]">
               Subject
               <input
                 className="ml-10 p-[1px] text-white bg-white bg-opacity-35 rounded-md float-right w-9/12 pl-2"
                 type="text"
+                maxLength={20}
                 onChange={(e) => {
                   setSubject(e.target.value);
                 }}
@@ -51,6 +50,7 @@ const InputPopUp = ({ showPopUp, setshowPopUp, alluser, setalluser }) => {
               <input
                 className="ml-4 p-[1px] text-white bg-white bg-opacity-35 rounded-md float-right w-9/12 pl-2"
                 type="text"
+                maxLength={20}
                 onChange={(e) => {
                   setMerchant(e.target.value);
                 }}
@@ -70,7 +70,7 @@ const InputPopUp = ({ showPopUp, setshowPopUp, alluser, setalluser }) => {
               Total
               <input
                 className="ml-4 p-[1px] text-white bg-white bg-opacity-35 rounded-md float-right w-9/12 pl-2"
-                type="text"
+                type="number"
                 onChange={(e) => {
                   setTotal(e.target.value);
                 }}

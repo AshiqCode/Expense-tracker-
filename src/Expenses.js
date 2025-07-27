@@ -2,7 +2,7 @@ import "./index.css";
 import avatar from "./assest/avatar.png";
 import InputPopUp from "./InputPopUp";
 import { useState } from "react";
-const Expenses = () => {
+const Expenses = ({ handleUserData }) => {
   const [showPopUp, setshowPopUp] = useState(false);
   const [alluser, setalluser] = useState([]);
   return (
@@ -32,7 +32,11 @@ const Expenses = () => {
       <div className="h-[600px] flex">
         <div className="bg-[rgb(27,27,27)] w-[15vw] text-white select-none">
           <div className="mt-6">
-            <img src={avatar} className="rounded-full h-24 mx-auto ]" />
+            <img
+              src={avatar}
+              alt="img"
+              className="rounded-full h-24 mx-auto ]"
+            />
             <p className="text-2xl mb-8 font-serif ">Avatar</p>
           </div>
           <div className="bg-slate-400 bg-opacity-10 w-9/12 mx-auto p-2 rounded-lg mt-6 ">
@@ -56,18 +60,30 @@ const Expenses = () => {
         </div>
         <div className="bg-white bg-opacity-5 w-[75vw]">
           <div className="flex justify-around">
-            <div>Subject</div>
-            <div>Category</div>
-            <div>Merchant</div>
-            <div>Date</div>
+            <div className="w-2/12">Subject</div>
+            <div className="w-2/12">Category</div>
+            <div className="w-2/12">Merchant</div>
+            <div className="w-2/12">Action</div>
           </div>
           {alluser.map((e) => {
             return (
               <div className="flex justify-around" key={e.id}>
-                <div>{e.Subject}</div>
-                <div>{e.Category}</div>
-                <div>{e.Merchant}</div>
-                <div>{e.Date}</div>
+                <div className="w-2/12 mt-2">{e.Subject}</div>
+                <div className="w-2/12 mt-2">{e.Category}</div>
+                <div className="w-2/12 mt-2">{e.Merchant}</div>
+                <div className="w-2/12 mt-2">
+                  <button
+                    className="font-sans text-[12px] bg-slate-600 px-2 leading-6"
+                    onClick={() => {
+                      handleUserData(e);
+                    }}
+                  >
+                    Edit
+                  </button>
+                  <button className="font-sans text-[12px] bg-slate-300 text-black px-2 leading-6 ml-1">
+                    delete
+                  </button>
+                </div>
               </div>
             );
           })}

@@ -5,6 +5,11 @@ import { useState } from "react";
 const Expenses = ({ handleUserData }) => {
   const [showPopUp, setshowPopUp] = useState(false);
   const [alluser, setalluser] = useState([]);
+  const handledelete = (e) => {
+    const Filtereduser = alluser.filter((Expense) => Expense.id !== e.id);
+    console.log(Filtereduser);
+    setalluser(Filtereduser);
+  };
   return (
     <div className="bg-[rgb(27,27,27)] w-[85%] text-white mt-6 mx-auto">
       <InputPopUp
@@ -80,7 +85,12 @@ const Expenses = ({ handleUserData }) => {
                   >
                     Edit
                   </button>
-                  <button className="font-sans text-[12px] bg-slate-300 text-black px-2 leading-6 ml-1">
+                  <button
+                    className="font-sans text-[12px] bg-slate-300 text-black px-2 leading-6 ml-1"
+                    onClick={() => {
+                      handledelete(e);
+                    }}
+                  >
                     delete
                   </button>
                 </div>

@@ -1,9 +1,14 @@
 import { useState } from "react";
 import "./App.css";
 import Expenses from "./Expenses";
-import CurrentPopUP from "./CurrentPopUP";
+// import CurrentPopUP from "./CurrentPopUP";
 
 function App() {
+  const [showPopUp, setshowPopUp] = useState(false);
+  const [showUserData, setshowUserData] = useState(false);
+  const [currentData, setcurrentData] = useState([]);
+  const [isedit, setisedit] = useState(false);
+
   const handleUserData = (e) => {
     setshowUserData(true);
     setcurrentData({
@@ -17,9 +22,7 @@ function App() {
       id: e.id,
     });
   };
-  const [showPopUp, setshowPopUp] = useState(false);
-  const [showUserData, setshowUserData] = useState(false);
-  const [currentData, setcurrentData] = useState([]);
+  console.log(currentData, isedit);
 
   return (
     <div className="App">
@@ -27,12 +30,15 @@ function App() {
         setshowPopUp={setshowPopUp}
         showPopUp={showPopUp}
         handleUserData={handleUserData}
+        setisedit={setisedit}
+        isedit={isedit}
+        currentData={currentData}
       />
-      <CurrentPopUP
+      {/* <CurrentPopUP
         showUserData={showUserData}
         setshowUserData={setshowUserData}
         currentData={currentData}
-      />
+      /> */}
     </div>
   );
 }

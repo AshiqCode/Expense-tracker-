@@ -2,27 +2,35 @@ import "./index.css";
 import avatar from "./assest/avatar.png";
 import InputPopUp from "./InputPopUp";
 import { useState } from "react";
-const Expenses = ({ handleUserData }) => {
+const Expenses = ({ handleUserData, currentData, setisedit, isedit }) => {
   const [showPopUp, setshowPopUp] = useState(false);
   const [alluser, setalluser] = useState([]);
   const handledelete = (e) => {
     const Filtereduser = alluser.filter((Expense) => Expense.id !== e.id);
     console.log(Filtereduser);
+
     setalluser(Filtereduser);
   };
+  console.log(currentData);
   return (
     <div className="bg-[rgb(27,27,27)] w-[85%] text-white mt-6 mx-auto">
-      <InputPopUp
-        setshowPopUp={setshowPopUp}
-        showPopUp={showPopUp}
-        alluser={alluser}
-        setalluser={setalluser}
-      />
+      {showPopUp && (
+        <InputPopUp
+          setshowPopUp={setshowPopUp}
+          showPopUp={showPopUp}
+          alluser={alluser}
+          setalluser={setalluser}
+          currentData={currentData}
+          setisedit={setisedit}
+          isedit={isedit}
+        />
+      )}
       <div
         style={{ borderBottom: "solid white 1px" }}
         className="text-left text-2xl pb-2 pl-6 pt-2 font-mono flex justify-between"
       >
         <div>Expenses</div>
+        <div>{isedit ? "true" : "false"}</div>
         <div>
           <button
             className="font-sans text-[12px] mr-8 bg-cyan-600 px-2 leading-6"
@@ -81,6 +89,8 @@ const Expenses = ({ handleUserData }) => {
                     className="font-sans text-[12px] bg-slate-600 px-2 leading-6"
                     onClick={() => {
                       handleUserData(e);
+                      setshowPopUp(true);
+                      setisedit(true);
                     }}
                   >
                     Edit

@@ -1,5 +1,12 @@
 import "./index.css";
-const CurrentPopUP = ({ showUserData, setshowUserData, currentData }) => {
+const CurrentPopUP = ({
+  showUserData,
+  setshowUserData,
+  currentData,
+  isedit,
+
+}) => {
+
   return (
     <div>
       {showUserData && (
@@ -17,7 +24,7 @@ const CurrentPopUP = ({ showUserData, setshowUserData, currentData }) => {
                 maxLength={20}
                 defaultValue={currentData.Subject}
                 onChange={(e) => {
-                  // setSubject(e.target.value);
+                  // (e.target.value);
                   console.log(e.target.value);
                 }}
               />

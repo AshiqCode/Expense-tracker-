@@ -43,7 +43,6 @@ const InputPopUp = ({
     setshowPopUp(false);
     setisedit(false);
   };
-
   return (
     <>
       <div className="fixed inset-0 bg-black bg-opacity-50 items-center grid mx-auto">

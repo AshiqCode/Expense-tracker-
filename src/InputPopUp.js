@@ -43,15 +43,12 @@ const InputPopUp = ({
     setshowPopUp(false);
     setisedit(false);
   };
-  console.log(isedit);
-  console.log(Subject);
 
   return (
     <>
       <div className="fixed inset-0 bg-black bg-opacity-50 items-center grid mx-auto">
         <div
           style={{ border: "solid white 1px" }}
-          
           className="w-[40%] bg-black mx-auto text-left p-8 text-white rounded-lg"
         >
           <h1 className="mb-2 pb-9 text-2xl">

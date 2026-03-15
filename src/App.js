@@ -34,11 +34,7 @@ function App() {
         isedit={isedit}
         currentData={currentData}
       />
-      {/* <CurrentPopUP
-        showUserData={showUserData}
-        setshowUserData={setshowUserData}
-        currentData={currentData}
-      /> */}
+      
     </div>
   );
 }

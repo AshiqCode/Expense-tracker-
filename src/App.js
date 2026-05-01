@@ -8,7 +8,6 @@ function App() {
   const [showUserData, setshowUserData] = useState(false);
   const [currentData, setcurrentData] = useState([]);
   const [isedit, setisedit] = useState(false);
-
   const handleUserData = (e) => {
     setshowUserData(true);
     setcurrentData({
